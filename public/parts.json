@@ -1,0 +1,38 @@
+[
+    {
+        "_id": 1,
+        "name": "Bumper v100",
+        "img": "https://i.ibb.co/dppRFzg/Car-Bumper-2.jpg",
+        "details": "Front Bumper Cover, Primed, CAPA CERTIFIED",
+        "minimumQnt": 90,
+        "availableQnt": 800,
+        "price": "215"
+    },
+    {
+        "_id": 2,
+        "name": "Bumper C500",
+        "img": "https://i.ibb.co/NsbwXDw/car-bumper-3.jpg",
+        "details": "Bumper Cover - Front, Primed, Includes Fender, CAPA Certified",
+        "minimumQnt": 90,
+        "availableQnt": 800,
+        "price": "215"
+    },
+    {
+        "_id": 3,
+        "name": "Window Regulator AC",
+        "img": "https://i.ibb.co/LxP6L79/w-regulator-3.png",
+        "details": "Front, Passenger Side Power Window Regulator, With Motor, Crew Cab",
+        "minimumQnt": 50,
+        "availableQnt": 500,
+        "price": "30"
+    },
+    {
+        "_id": 4,
+        "name": "Window Regulator 330",
+        "img": "https://i.ibb.co/LxP6L79/w-regulator-3.png",
+        "details": "Front, Driver Side Power Window Regulator, With Motor, Crew Cab",
+        "minimumQnt": 50,
+        "availableQnt": 500,
+        "price": "35"
+    }
+]
