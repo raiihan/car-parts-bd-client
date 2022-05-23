@@ -1,38 +1,95 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import auth from '../../assets/auth.jpg';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import authImg from '../../assets/auth.jpg';
 import Social from './Social';
+import auth from '../../Firebase/Firebase.init';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Loading from '../Shared/Loading';
 
 const Login = () => {
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
+    const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    // navigate(from, { replace: true })
+
+    if (loading) {
+        return <Loading />
+    }
+    if (user) {
+        navigate(from, { replace: true })
+    }
+    const onSubmit = data => {
+        signInWithEmailAndPassword(data.email, data.password)
+        reset()
+    };
     return (
         <div>
             <div class="hero min-h-screen bg-base-200">
                 <div class="hero-content flex-col lg:flex-row ">
                     <div class="hidden lg:flex mr-28">
-                        <img src={auth} alt='auth' class="max-w-sm rounded-lg" />
+                        <img src={authImg} alt='auth' class="max-w-sm rounded-lg" />
                     </div>
                     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <h2 className='text-3xl text-center pt-5'>Login</h2>
                         <div class="card-body">
-                            <form >
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div class="form-control">
+
                                     <label class="label">
                                         <span class="label-text">Email</span>
                                     </label>
-                                    <input type="text" placeholder="email" class="input input-bordered" />
+                                    <input type="text"
+                                        {...register("email", {
+                                            required: {
+                                                value: true,
+                                                message: 'Email is Required'
+                                            },
+                                            pattern: {
+                                                value: /\S+@\S+\.\S+/,
+                                                message: 'Please Provide a valid email'
+                                            }
+                                        })}
+                                        placeholder="email" class="input input-bordered" />
+                                    <label class="label">
+                                        {errors.email?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.email?.message}</span>}
+                                        {errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors?.email?.message}</span>}
+                                    </label>
                                 </div>
+
                                 <div class="form-control">
                                     <label class="label">
                                         <span class="label-text">Password</span>
                                     </label>
-                                    <input type="text" placeholder="password" class="input input-bordered" />
+                                    <input type="password"
+                                        {...register("password", {
+                                            required: {
+                                                value: true,
+                                                message: 'Password is Required'
+                                            },
+                                            minLength: {
+                                                value: 6,
+                                                message: 'Minimum Character Length 6 or Longer'
+                                            }
+                                        })}
+                                        placeholder="password" class="input input-bordered" />
+                                    <label class="label">
+                                        {errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.password?.message}</span>}
+                                        {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors?.password?.message}</span>}
+                                    </label>
+
                                     <label class="label flex justify-end">
                                         <a href="/" class="label-text-alt link link-hover">Forgot password?</a>
                                     </label>
                                 </div>
+                                <p className='text-red-500 text-center'><small>{error?.message}</small></p>
                                 <div class="form-control mt-6">
                                     <button type='submit' class="btn btn-primary">Login</button>
                                 </div>
