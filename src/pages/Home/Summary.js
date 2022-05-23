@@ -3,6 +3,7 @@ import { BsFillPeopleFill } from 'react-icons/bs';
 import { GiShoppingBag } from 'react-icons/gi';
 import { MdReviews } from 'react-icons/md';
 
+
 const Summary = () => {
     return (
         <div className='lg:px-20 mt-24'>

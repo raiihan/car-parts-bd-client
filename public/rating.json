@@ -1,0 +1,44 @@
+[
+    {
+        "_id": 1,
+        "name": "Beck Anavarin",
+        "rating": 4,
+        "review": "This site is really amazing and this parts such a good for my cars "
+    },
+    {
+        "_id": 2,
+        "name": "Joye Walter",
+        "rating": 1,
+        "review": "This site is really amazing and this parts such a good for my cars "
+    },
+    {
+        "_id": 3,
+        "name": "William Bell",
+        "rating": 3,
+        "review": "This site is really amazing and this parts such a good for my cars "
+    },
+    {
+        "_id": 4,
+        "name": "Love Quine",
+        "rating": 2,
+        "review": "This site is really amazing and this parts such a good for my cars "
+    },
+    {
+        "_id": 5,
+        "name": "Forty Quine",
+        "rating": 4,
+        "review": "This site is really amazing and this parts such a good for my cars "
+    },
+    {
+        "_id": 6,
+        "name": "Delaila Walter",
+        "rating": 3,
+        "review": "This site is really amazing and this parts such a good for my cars "
+    },
+    {
+        "_id": 7,
+        "name": "Elly Pincher",
+        "rating": 5,
+        "review": "This site is really amazing and this parts such a good for my cars "
+    }
+]
