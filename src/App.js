@@ -11,6 +11,7 @@ import Navbar from "./pages/Shared/Navbar";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FitForMe from "./pages/Home/FitForMe";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 
 function App() {
@@ -19,11 +20,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
           <Route path="/fitforme" element={<FitForMe />} />
         </Route>
+
         <Route path="/newsletter" element={<NewsLetter />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

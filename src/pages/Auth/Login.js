@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 import authImg from '../../assets/auth.jpg';
 import Social from './Social';
 import auth from '../../Firebase/Firebase.init';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
 
 const Login = () => {
@@ -14,13 +15,31 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    // Reset Password
+    const [
+        sendPasswordResetEmail,
+        sending,
+        resetError] = useSendPasswordResetEmail(auth);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    if (loading) {
+    //  Resset Password
+    const [resetEmail, setResetEmail] = useState('');
+    const resetPassword = async () => {
+        if (resetEmail && !resetError?.message) {
+            await sendPasswordResetEmail(resetEmail);
+            toast.success('Reset Email send. Please Check your Email')
+        }
+        else {
+            toast.error('Please Enter Valid Email')
+        }
+    }
+
+
+    if (loading || sending) {
         return <Loading />
     }
     if (user) {
@@ -57,7 +76,10 @@ const Login = () => {
                                                 message: 'Please Provide a valid email'
                                             }
                                         })}
-                                        placeholder="email" class="input input-bordered" />
+                                        placeholder="email"
+                                        class="input input-bordered"
+                                        onChange={(e) => setResetEmail(e.target.value)}
+                                    />
                                     <label class="label">
                                         {errors.email?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.email?.message}</span>}
                                         {errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors?.email?.message}</span>}
@@ -86,10 +108,12 @@ const Login = () => {
                                     </label>
 
                                     <label class="label flex justify-end">
-                                        <a href="/" class="label-text-alt link link-hover">Forgot password?</a>
+                                        <button
+                                            onClick={resetPassword}
+                                            class="label-text-alt link link-hover">Forgot password?</button>
                                     </label>
                                 </div>
-                                <p className='text-red-500 text-center'><small>{error?.message}</small></p>
+                                <p className='text-red-500 text-center'><small>{error?.message || resetError?.message}</small></p>
                                 <div class="form-control mt-6">
                                     <button type='submit' class="btn btn-primary">Login</button>
                                 </div>
