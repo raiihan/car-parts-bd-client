@@ -39,7 +39,9 @@ const PurchasePage = () => {
         e.preventDefault();
         const order = {
             partsId: id,
-            name: parts.name,
+            customerName: user?.displayName,
+            email: user?.email,
+            partsName: parts.name,
             quantity: quantity,
             price: parseInt(parts.price) * parseInt(quantity),
             phone: e.target.phone.value,
@@ -105,7 +107,7 @@ const PurchasePage = () => {
                                 </div>
                                 <div class="form-control">
                                     <label class="label">
-                                        <span class="label-text">Phone Number</span>
+                                        <span class="label-text">Address</span>
                                     </label>
                                     <textarea type="text" required name='address' placeholder='Add your Address' class="input input-bordered" ></textarea>
                                 </div>

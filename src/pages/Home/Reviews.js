@@ -4,7 +4,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { useQuery } from 'react-query';
 
 const Reviews = () => {
-    const { data: reviews, isLoading } = useQuery('rating', () => fetch('rating.json').then(res => res.json()));
+    const { data: reviews, isLoading } = useQuery('rating', () => fetch('http://localhost:5000/review').then(res => res.json()));
     if (isLoading) {
         return <p>loadding...</p>
     }

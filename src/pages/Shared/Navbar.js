@@ -5,10 +5,11 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
 
 const Navbar = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const { pathname } = useLocation();
     const logout = () => {
         signOut(auth);
+        localStorage.removeItem('accessJWT');
     }
 
     const menuLi = <>

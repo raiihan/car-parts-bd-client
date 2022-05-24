@@ -7,6 +7,7 @@ import Social from './Social';
 import auth from '../../Firebase/Firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
+import baseurl from '../../api/baseurl';
 
 const Login = () => {
     const [
@@ -43,7 +44,12 @@ const Login = () => {
         return <Loading />
     }
     if (user) {
-        navigate(from, { replace: true })
+        const email = user.user.email;
+        (async () => {
+            const { data } = await baseurl.post('/createjwt', { email: email })
+            localStorage.setItem('accessJWT', data.accessJWT);
+            navigate(from, { replace: true })
+        })()
     }
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)

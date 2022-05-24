@@ -10,7 +10,9 @@ const Dashboard = () => {
             <div class="drawer-content flex flex-col justify-center items-center sm:justify-start sm:items-start p-3 lg:p-8  bg-base-300">
                 {/* <!-- Page content here --> */}
                 <h2 className='text-3xl font-bold'>Welcome To the Dashboard</h2>
-                <Outlet />
+                <div className='w-full'>
+                    <Outlet />
+                </div>
 
 
             </div>
