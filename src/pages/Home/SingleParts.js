@@ -1,7 +1,7 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 const SingleParts = ({ parts }) => {
-    const { name, img, details, price, minimumQnt, availableQnt } = parts;
+    const { name, img, details, price, minimumQnt, availableQnt, _id } = parts;
     return (
 
         <div class="card max-w-lg bg-base-100 shadow-xl">
@@ -13,7 +13,7 @@ const SingleParts = ({ parts }) => {
                 <p>Available Quantity of Stock:  {availableQnt}</p>
                 <p>Unit Price:  ${price}</p>
                 <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+                    <button class="btn btn-primary"> <Link to={`/parts/${_id}`}>Buy Now</Link> </button>
                 </div>
             </div>
         </div>

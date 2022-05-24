@@ -20,6 +20,7 @@ import ManageOrders from "./pages/Dashboard/ManageOrders";
 import AddProduct from "./pages/Dashboard/AddProduct";
 import MakeAdmin from "./pages/Dashboard/MakeAdmin";
 import ManageProduct from "./pages/Dashboard/ManageProduct";
+import PurchasePage from "./pages/Home/PurchasePage";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Home />} />
 
         <Route element={<PrivateRoute />}>
+          <Route path="/parts/:id" element={<PurchasePage />} />
           <Route path="/dashboard" element={<Dashboard />} >
             <Route path="myorders" element={<MyOrders />} />
             <Route path="addreview" element={<AddReview />} />

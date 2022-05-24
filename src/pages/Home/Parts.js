@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading';
 
 const Parts = () => {
     const { isLoading, data: carParts } = useQuery('carParts', () =>
-        fetch('parts.json').then(res =>
+        fetch('http://localhost:5000/parts').then(res =>
             res.json()
         )
     );
