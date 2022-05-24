@@ -12,6 +12,14 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FitForMe from "./pages/Home/FitForMe";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import MyOrders from "./pages/Dashboard/MyOrders";
+import AddReview from "./pages/Dashboard/AddReview";
+import Profile from "./pages/Dashboard/Profile";
+import AdminRoute from "./pages/Auth/AdminRoute";
+import ManageOrders from "./pages/Dashboard/ManageOrders";
+import AddProduct from "./pages/Dashboard/AddProduct";
+import MakeAdmin from "./pages/Dashboard/MakeAdmin";
+import ManageProduct from "./pages/Dashboard/ManageProduct";
 
 
 function App() {
@@ -22,7 +30,17 @@ function App() {
         <Route path="/" element={<Home />} />
 
         <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} >
+            <Route path="myorders" element={<MyOrders />} />
+            <Route path="addreview" element={<AddReview />} />
+            <Route path="profile" element={<Profile />} />
+            <Route elemen={<AdminRoute />}>
+              <Route path="manageorders" element={<ManageOrders />} />
+              <Route path="addproduct" element={<AddProduct />} />
+              <Route path="admin" element={<MakeAdmin />} />
+              <Route path="manageproduct" element={<ManageProduct />} />
+            </Route>
+          </Route>
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
           <Route path="/fitforme" element={<FitForMe />} />

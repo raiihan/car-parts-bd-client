@@ -1,12 +1,12 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
-
+    const { pathname } = useLocation();
     const logout = () => {
         signOut(auth);
     }
@@ -39,19 +39,22 @@ const Navbar = () => {
                         {menuLi}
                     </ul>
                 </div>
+
                 <Link to='/' class="btn btn-ghost normal-case text-xl">Car Parts BD</Link>
 
-                {/* Dashbord Navbar Toggle*/}
-                {user && <label for="dashboard-drawer" class="btn btn-ghost drawer-button lg:hidden">
-                    <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
-                </label>}
+
 
             </div>
+            {/* Dashbord Navbar Toggle*/}
+            {pathname.includes('dashboard') && <label for="dashboard-drawer" class="btn btn-ghost drawer-button navbar-end lg:hidden">
+                <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
+            </label>}
             <div class="navbar-end hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">
                     {menuLi}
                 </ul>
             </div>
+
         </div>
     );
 };

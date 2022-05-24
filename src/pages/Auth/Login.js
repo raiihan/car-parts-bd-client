@@ -61,7 +61,6 @@ const Login = () => {
                         <div class="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div class="form-control">
-
                                     <label class="label">
                                         <span class="label-text">Email</span>
                                     </label>
