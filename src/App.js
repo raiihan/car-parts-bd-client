@@ -21,6 +21,7 @@ import AddProduct from "./pages/Dashboard/AddProduct";
 import MakeAdmin from "./pages/Dashboard/MakeAdmin";
 import ManageProduct from "./pages/Dashboard/ManageProduct";
 import PurchasePage from "./pages/Home/PurchasePage";
+import Payments from "./pages/Dashboard/Payments";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/parts/:id" element={<PurchasePage />} />
           <Route path="/dashboard" element={<Dashboard />} >
             <Route path="myorders" element={<MyOrders />} />
+            <Route path="payment/:id" element={<Payments />} />
             <Route path="addreview" element={<AddReview />} />
             <Route path="profile" element={<Profile />} />
             <Route elemen={<AdminRoute />}>
