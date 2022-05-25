@@ -22,6 +22,7 @@ import MakeAdmin from "./pages/Dashboard/MakeAdmin";
 import ManageProduct from "./pages/Dashboard/ManageProduct";
 import PurchasePage from "./pages/Home/PurchasePage";
 import Payments from "./pages/Dashboard/Payments";
+import EditProfile from "./pages/Dashboard/EditProfile";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="payment/:id" element={<Payments />} />
             <Route path="addreview" element={<AddReview />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="editprofile/:id" element={<EditProfile />} />
             <Route elemen={<AdminRoute />}>
               <Route path="manageorders" element={<ManageOrders />} />
               <Route path="addproduct" element={<AddProduct />} />
