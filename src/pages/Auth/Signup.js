@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import sign from '../../assets/signup.jpg';
 import auth from '../../Firebase/Firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 import Social from './Social';
 
@@ -18,16 +19,21 @@ const Signup = () => {
     console.log(updateError?.message);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+    const [token] = useToken(user);
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
+    const uname = user?.user?.displayName;
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    }, [user, from, navigate, uname])
     if (loading || updating) {
         return <Loading />
     }
-    if (user) {
-        navigate(from, { replace: true })
-    }
+
 
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);

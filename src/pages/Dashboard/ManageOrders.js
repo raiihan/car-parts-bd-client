@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axiosPrivate from '../../api/axiosPrivate';
 import baseurl from '../../api/baseurl';
 
 const ManageOrders = () => {
@@ -6,7 +7,7 @@ const ManageOrders = () => {
 
     useEffect(() => {
         (async () => {
-            const { data } = await baseurl.get(`/orders`);
+            const { data } = await axiosPrivate.get(`/orders`);
             setOrders(data)
         })()
     }, [])

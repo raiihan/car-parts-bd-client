@@ -8,6 +8,7 @@ import auth from '../../Firebase/Firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
 import baseurl from '../../api/baseurl';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [
@@ -23,6 +24,7 @@ const Login = () => {
         resetError] = useSendPasswordResetEmail(auth);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+    const [token] = useToken(user);
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -44,12 +46,7 @@ const Login = () => {
         return <Loading />
     }
     if (user) {
-        const email = user.user.email;
-        (async () => {
-            const { data } = await baseurl.post('/createjwt', { email: email })
-            localStorage.setItem('accessJWT', data.accessJWT);
-            navigate(from, { replace: true })
-        })()
+        navigate(from, { replace: true })
     }
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
