@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import Loading from '../Shared/Loading';
+import DeleteConfirmation from './DeleteConfirmation';
 
 const ManageProduct = () => {
-    const { isLoading, data: carParts } = useQuery('carParts', () =>
-        fetch('http://localhost:5000/parts').then(res =>
+    const [deleteProduct, setDeleteProduct] = useState(null)
+    const { isLoading, data: carParts, refetch } = useQuery('carParts', () =>
+        fetch('http://localhost:5000/parts', {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessJWT')}`
+            }
+        }).then(res =>
             res.json()
         )
     );
@@ -36,13 +43,20 @@ const ManageProduct = () => {
                                 <td>{parts.minimumQnt}</td>
                                 <td>{parts.availableQnt}</td>
                                 <td>${parts.price}</td>
-                                <td>X</td>
+                                <td>
+                                    <label onClick={() => setDeleteProduct(parts)} for="parts-delete-modal" class="btn btn-xs btn-error">Delete</label>
+                                </td>
                             </tr>)
                         }
 
                     </tbody>
                 </table>
             </div>
+            {deleteProduct && <DeleteConfirmation
+                deleteProduct={deleteProduct}
+                setDeleteProduct={setDeleteProduct}
+                refetch={refetch}
+            />}
         </div>
     );
 };
