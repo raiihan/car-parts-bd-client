@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/Firebase.init';
+import MyOrderDelete from './MyOrderDelete';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
+    const [deleteOrder, setDeleteOrder] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,7 +33,7 @@ const MyOrders = () => {
                     setOrders(data)
                 });
         }
-    }, [user.email])
+    }, [user.email, navigate, deleteOrder])
 
     return (
         <div>
@@ -55,33 +57,27 @@ const MyOrders = () => {
                                 <td>{order.partsName}</td>
                                 <td>{order.quantity}</td>
                                 <td>${order.price}</td>
-                                <td>
-                                    {<Link className='btn btn-xs btn-secondary' to={`/dashboard/payment/${order._id}`}>Please Pay</Link>}
+                                <td className='text-center'>
+                                    {!order.paid && <Link className='btn btn-xs btn-secondary' to={`/dashboard/payment/${order._id}`}>Please Pay</Link>}
+                                    {
+                                        order.paid && <div >
+                                            <p className='text-green-500'>Already Paid</p>
+                                            <p>Transaction Id: <span className='text-green-500'>{order.transactionId}</span></p>
+                                        </div>
+                                    }
                                 </td>
-                                <td>X</td>
+                                <td>
+                                    <label disabled={order.transactionId} onClick={() => setDeleteOrder(order)} for="order-delete-modal" class="btn btn-xs btn-error">Cancel</label>
+                                </td>
                             </tr>)
                         }
-                        {/* {
-                            appointments.map((a, index) => <tr key={a._id}>
-                                <th>{index + 1}</th>
-                                <td>{a.patientName}</td>
-                                <td>{a.date}</td>
-                                <td>{a.slot}</td>
-                                <td>{a.treatment}</td>
-                                <td>
-                                    {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
-                                    {(a.price && a.paid) && <div>
-                                        <p><span className='text-success'>Paid</span></p>
-                                        <p>Transaction id: <span className='text-success'>{a.transactionId}</span></p>
-                                    </div>}
-                                </td>
-                            </tr>)
-                        } */}
-
-
                     </tbody>
                 </table>
             </div>
+            {deleteOrder && <MyOrderDelete
+                deleteOrder={deleteOrder}
+                setDeleteOrder={setDeleteOrder}
+            />}
         </div>
     );
 };

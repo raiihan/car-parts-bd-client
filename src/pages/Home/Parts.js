@@ -19,7 +19,7 @@ const Parts = () => {
         <section className='flex flex-col lg:flex-row lg:px-20 mt-16' id='parts'>
             <div className=' lg:w-2/5 pr-4 flex items-center'>
                 <div className=''>
-                    <h1 className='text-3xl'>Auto Body Parts {carParts.length}</h1>
+                    <h1 className='text-3xl'>Auto Body Parts</h1>
                     <img src={banner} alt="" className='p-8 hidden lg:block' />
                 </div>
             </div>

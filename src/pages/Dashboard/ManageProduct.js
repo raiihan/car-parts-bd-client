@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import DeleteConfirmation from './DeleteConfirmation';
 

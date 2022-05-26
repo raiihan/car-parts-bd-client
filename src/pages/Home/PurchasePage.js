@@ -60,7 +60,7 @@ const PurchasePage = () => {
                 <div class="card-body">
                     <div className='flex flex-col lg:flex-row justify-around'>
                         <div className='w-full '>
-                            <figure  ><img src={parts.img} alt="Shoes" /></figure>
+                            <figure  ><img src={parts.img} alt={parts.name} /></figure>
                             <h2 class="card-title">{parts.name}</h2>
                             <div>
                                 <span className="font-bold">Description:-</span>

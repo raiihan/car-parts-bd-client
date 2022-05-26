@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../Firebase/Firebase.init';
+import Loading from '../Shared/Loading';
 
 const Profile = () => {
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
+
 
     const [profile, setProfile] = useState({});
     useEffect(() => {
@@ -19,6 +20,9 @@ const Profile = () => {
         }
     }, [user?.email])
 
+    if (loading) {
+        return <Loading />
+    }
     return (
         <div>
 
