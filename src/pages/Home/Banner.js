@@ -4,12 +4,12 @@ import banner from '../../assets/banner.jpg';
 
 const Banner = () => {
     return (
-        <div class="hero h-full lg:h-[70vh] bg-base-300 mt-16">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <img src={banner} alt='banner' class="max-w-sm  lg:h-[50vh] rounded-lg shadow-2xl" />
+        <div className="hero h-full lg:h-[70vh] bg-base-300 mt-16">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <img src={banner} alt='banner' className="max-w-sm  lg:h-[50vh] rounded-lg shadow-2xl" />
                 <div className='max-w-xl'>
                     <p></p>
-                    <h1 class="text-4xl font-bold">
+                    <h1 className="text-4xl font-bold">
                         <Typewriter
 
                             onInit={(typewriter) => {
@@ -25,7 +25,7 @@ const Banner = () => {
                             }}
                         />
                     </h1>
-                    <p class="py-6"><span className='font-bold'>Car-Parts-BD</span> is your source for auto parts, accessories and advice. Get parts fast with Free Next Day Delivery and Free Store Pick Up at your nearest hub Point.</p>
+                    <p className="py-6"><span className='font-bold'>Car-Parts-BD</span> is your source for auto parts, accessories and advice. Get parts fast with Free Next Day Delivery and Free Store Pick Up at your nearest hub Point.</p>
                 </div>
             </div>
         </div>

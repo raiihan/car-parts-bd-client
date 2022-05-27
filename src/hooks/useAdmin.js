@@ -13,7 +13,7 @@ const useAdmin = user => {
             //     setAdmin(data.admin);
             // })()
 
-            fetch(`http://localhost:5000/admin/${email}`, {
+            fetch(`https://lit-crag-25230.herokuapp.com/admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessJWT')}`

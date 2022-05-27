@@ -16,7 +16,7 @@ const AddReview = () => {
             rating: parseInt(data.rating),
             review: data.review
         }
-        const res = await axios.post('http://localhost:5000/review', review)
+        const res = await axios.post('https://lit-crag-25230.herokuapp.com/review', review)
 
         if (res?.data?.insertedId) {
             toast('Successfully Added Your Review');
@@ -25,23 +25,23 @@ const AddReview = () => {
         console.log(res);
     };
     return (
-        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl p-3 lg:p-8 mt-5">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl p-3 lg:p-8 mt-5">
             <h2 className='text-3xl text-center pt-5'>Add Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Name</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Name</span>
                     </label>
                     <input type="text"
                         {...register("name")}
                         disabled
                         value={user?.displayName}
-                        class="input input-bordered"
+                        className="input input-bordered"
                     />
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Rating Number</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Rating Number</span>
                     </label>
                     <input type="number"
                         {...register("rating", {
@@ -59,16 +59,16 @@ const AddReview = () => {
                                 message: 'Must be smaller than 5'
                             }
                         })}
-                        placeholder="Set a Ratting out of 5" class="input input-bordered" />
-                    <label class="label">
-                        {errors.rating?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.rating?.message}</span>}
-                        {errors.rating?.type === 'min' && <span class="label-text-alt text-red-500">{errors?.rating?.message}</span>}
-                        {errors.rating?.type === 'max' && <span class="label-text-alt text-red-500">{errors?.rating?.message}</span>}
+                        placeholder="Set a Ratting out of 5" className="input input-bordered" />
+                    <label className="label">
+                        {errors.rating?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.rating?.message}</span>}
+                        {errors.rating?.type === 'min' && <span className="label-text-alt text-red-500">{errors?.rating?.message}</span>}
+                        {errors.rating?.type === 'max' && <span className="label-text-alt text-red-500">{errors?.rating?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Review</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Review</span>
                     </label>
                     <textarea type="text"
                         {...register("review", {
@@ -78,14 +78,14 @@ const AddReview = () => {
                             }
                         })}
                         placeholder="Please Add Review"
-                        class="input input-bordered"
+                        className="input input-bordered"
                     ></textarea>
-                    <label class="label">
-                        {errors.review?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.review?.message}</span>}
+                    <label className="label">
+                        {errors.review?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.review?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control mt-6">
-                    <button type='submit' class="btn btn-primary">Login</button>
+                <div className="form-control mt-6">
+                    <button type='submit' className="btn btn-primary">Add Review</button>
                 </div>
             </form>
 

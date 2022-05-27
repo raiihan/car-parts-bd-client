@@ -26,9 +26,9 @@ const Profile = () => {
     return (
         <div>
 
-            <div class="card max-w-lg bg-base-100 shadow-xl my-10">
-                <div class="card-body text-center">
-                    <h2 class="text-xl">Name:- <span className='font-bold'>{profile?.name}</span></h2>
+            <div className="card max-w-lg bg-base-100 shadow-xl my-10">
+                <div className="card-body text-center">
+                    <h2 className="text-xl">Name:- <span className='font-bold'>{profile?.name}</span></h2>
                     <p className='text-lg font-bold'>Email: {profile.email}</p>
                     {profile?.education && <p>Education:  <span className='text-lg font-bold'> {profile.education}</span></p>}
                     {profile?.linkedin && <p>Linkedin Profile: <span className='text-lg font-bold'> {profile.linkedin}</span></p>}

@@ -16,7 +16,7 @@ const PaymentCheckoutForm = ({ order }) => {
 
     useEffect(() => {
         if (price) {
-            fetch('http://localhost:5000/create-payment-intent', {
+            fetch('https://lit-crag-25230.herokuapp.com/create-payment-intent', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -33,9 +33,7 @@ const PaymentCheckoutForm = ({ order }) => {
         }
     }, [price])
 
-    if (paymentLoading) {
-        return <Loading />
-    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -90,7 +88,7 @@ const PaymentCheckoutForm = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://lit-crag-25230.herokuapp.com/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
@@ -99,7 +97,9 @@ const PaymentCheckoutForm = ({ order }) => {
                 body: JSON.stringify(payment)
             }).then(res => res.json())
                 .then(data => {
-                    setPaymentLoading(false);
+                    if (data) {
+                        setPaymentLoading(false);
+                    }
                     console.log(data);
                 })
         }
@@ -123,7 +123,7 @@ const PaymentCheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button type="submit" className='btn btn-primary mt-5' disabled={!stripe || !clientSecret}>
+                <button type="submit" className='btn btn-primary mt-5' disabled={!stripe || !clientSecret || success}>
                     Payment
                 </button>
             </form>

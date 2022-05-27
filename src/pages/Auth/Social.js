@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import auth from '../../Firebase/Firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -12,19 +12,21 @@ const Social = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    }, [user, from, navigate, token])
 
     if (loading) {
         return <Loading />
     }
-    if (user) {
-        navigate(from, { replace: true })
-    }
+
     return (
-        <div class="form-control">
+        <div className="form-control">
             <button
                 onClick={() => signInWithGoogle()}
-                class="btn btn-outline btn-primary">Continue With Google</button>
+                className="btn btn-outline btn-primary">Continue With Google</button>
             <p className='text-red-500 text-center'><small>{error?.message}</small></p>
         </div>
     );

@@ -14,7 +14,7 @@ const MyOrders = () => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`http://localhost:5000/orders/${email}`, {
+            fetch(`https://lit-crag-25230.herokuapp.com/orders/${email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessJWT')}`
@@ -38,8 +38,8 @@ const MyOrders = () => {
     return (
         <div>
             <h2 className='text-xl mb-4'>Orders Detail</h2>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
@@ -67,7 +67,7 @@ const MyOrders = () => {
                                     }
                                 </td>
                                 <td>
-                                    <label disabled={order.transactionId} onClick={() => setDeleteOrder(order)} for="order-delete-modal" class="btn btn-xs btn-error">Cancel</label>
+                                    <label disabled={order.transactionId} onClick={() => setDeleteOrder(order)} htmlFor="order-delete-modal" className="btn btn-xs btn-error">Cancel</label>
                                 </td>
                             </tr>)
                         }

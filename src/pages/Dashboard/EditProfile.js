@@ -27,37 +27,32 @@ const EditProfile = () => {
         <div>
             <h2 className='text-3xl text-center pt-5'>Add Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Name</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Name</span>
                     </label>
                     <input type="text"
-                        {...register("name", {
-                            required: {
-                                value: true,
-                                message: 'Name is Required'
-                            }
-                        })}
+                        disabled
                         defaultValue={user?.name}
-                        class="input input-bordered"
+                        className="input input-bordered"
                     />
-                    <label class="label">
-                        {errors.name?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.name?.message}</span>}
+                    <label className="label">
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.name?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Email</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Email</span>
                     </label>
                     <input type="text"
                         disabled
                         defaultValue={user?.email}
-                        class="input input-bordered"
+                        className="input input-bordered"
                     />
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Educational Qualification</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Educational Qualification</span>
                     </label>
                     <textarea type="text"
                         {...register("education", {
@@ -67,17 +62,17 @@ const EditProfile = () => {
                             }
                         })}
                         placeholder="Education"
-                        class="input input-bordered"
+                        className="input input-bordered"
                         defaultValue={user?.education}
                     ></textarea>
-                    <label class="label">
-                        {errors.education?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.education?.message}</span>}
+                    <label className="label">
+                        {errors.education?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.education?.message}</span>}
                     </label>
                 </div>
 
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Linkedin Profile Link</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Linkedin Profile Link</span>
                     </label>
                     <input type="text"
                         {...register("linkedin", {
@@ -88,16 +83,16 @@ const EditProfile = () => {
                         })}
                         defaultValue={user?.linkedin}
                         placeholder="Linkedin Profile"
-                        class="input input-bordered"
+                        className="input input-bordered"
                     />
-                    <label class="label">
-                        {errors.linkedin?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.linkedin?.message}</span>}
+                    <label className="label">
+                        {errors.linkedin?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.linkedin?.message}</span>}
                     </label>
                 </div>
 
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Phone Number</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Phone Number</span>
                     </label>
                     <input type="text"
                         {...register("phone", {
@@ -108,15 +103,15 @@ const EditProfile = () => {
                         })}
                         defaultValue={user?.phone}
                         placeholder="Phone Number"
-                        class="input input-bordered"
+                        className="input input-bordered"
                     />
-                    <label class="label">
-                        {errors.phone?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.phone?.message}</span>}
+                    <label className="label">
+                        {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.phone?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Add Location</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Add Location</span>
                     </label>
                     <textarea type="text"
                         {...register("location", {
@@ -127,15 +122,15 @@ const EditProfile = () => {
                         })}
                         defaultValue={user?.location}
                         placeholder="Location"
-                        class="input input-bordered"
+                        className="input input-bordered"
                     ></textarea>
-                    <label class="label">
-                        {errors.location?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.location?.message}</span>}
+                    <label className="label">
+                        {errors.location?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.location?.message}</span>}
                     </label>
                 </div>
 
-                <div class="form-control mt-6">
-                    <button type='submit' class="btn btn-primary">Login</button>
+                <div className="form-control mt-6">
+                    <button type='submit' className="btn btn-primary">Login</button>
                 </div>
             </form>
         </div>

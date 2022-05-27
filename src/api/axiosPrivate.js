@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPrivate = axios.create({
-    baseURL: "http://localhost:5000"
+    baseURL: "https://lit-crag-25230.herokuapp.com"
 })
 
 axiosPrivate.interceptors.request.use(function (config) {

@@ -13,29 +13,29 @@ const NewsLetter = () => {
                 </div>
 
                 <form>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Name</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Name</span>
                         </label>
-                        <input type="text" placeholder="Name" class="input input-bordered" />
+                        <input type="text" placeholder="Name" className="input input-bordered" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Email</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="Email" class="input input-bordered" />
+                        <input type="email" placeholder="Email" className="input input-bordered" />
                     </div>
 
-                    <div class="form-control mt-5">
-                        <label class=" cursor-pointer  flex items-center">
+                    <div className="form-control mt-5">
+                        <label className=" cursor-pointer  flex items-center">
                             <input type="checkbox"
                                 onClick={() => setChecked(!checked)}
-                                checked={checked ? 'checked' : ''} class="checkbox checkbox-primary" />
-                            <span class="label-text ml-5">Accept Term & condition</span>
+                                checked={checked ? 'checked' : ''} className="checkbox checkbox-primary" />
+                            <span className="label-text ml-5">Accept Term & condition</span>
                         </label>
                     </div>
-                    <div class="form-control w-2/4 mx-auto mt-6">
-                        <button type='submit' disabled={!checked} class="btn btn-primary">Login</button>
+                    <div className="form-control w-2/4 mx-auto mt-6">
+                        <button type='submit' disabled={!checked} className="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>

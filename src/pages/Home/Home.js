@@ -3,7 +3,6 @@ import Footer from '../Shared/Footer';
 import Banner from './Banner';
 import ConnectAndFitSection from './ConnectAndFitSection';
 import Parts from './Parts';
-import PopularParts from './PopularParts';
 import Reviews from './Reviews';
 import Summary from './Summary';
 import WhyChooseUs from './WhyChooseUs';
@@ -16,7 +15,6 @@ const Home = () => {
             <Summary />
             <Reviews />
             <ConnectAndFitSection />
-            <PopularParts />
             <WhyChooseUs />
             <Footer />
         </div>

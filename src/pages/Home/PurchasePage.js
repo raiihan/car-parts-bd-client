@@ -31,7 +31,7 @@ const PurchasePage = () => {
         }
         else {
             toast.error(`Please Add minimum ${parts.minimumQnt} or Maximum ${parts.availableQnt} Quantity`)
-            setDisable(!btnDisable);
+            setDisable(true);
         }
 
     }
@@ -56,12 +56,12 @@ const PurchasePage = () => {
     return (
         <div>
 
-            <div class="card card-compact w-full lg:w-4/6 mx-auto mt-16 bg-base-100 shadow-xl">
-                <div class="card-body">
+            <div className="card card-compact w-full lg:w-4/6 mx-auto mt-16 bg-base-100 shadow-xl">
+                <div className="card-body">
                     <div className='flex flex-col lg:flex-row justify-around'>
                         <div className='w-full '>
-                            <figure  ><img src={parts.img} alt={parts.name} /></figure>
-                            <h2 class="card-title">{parts.name}</h2>
+                            <figure  ><img src={parts.img} alt={parts.nam} /></figure>
+                            <h2 className="card-title">{parts.name}</h2>
                             <div>
                                 <span className="font-bold">Description:-</span>
                                 <p className='mb-2'> {parts.details}</p>
@@ -72,47 +72,47 @@ const PurchasePage = () => {
                                 <p>Unit Price:  ${parts.price}</p>
                             </div>
                         </div>
-                        <div class="divider lg:divider-horizontal"></div>
+                        <div className="divider lg:divider-horizontal"></div>
                         <div className='w-full lg:w-2/3'>
-                            <h2 class="card-title">Fill the form for purchase</h2>
+                            <h2 className="card-title">Fill the form for purchase</h2>
                             <form onSubmit={handleOrder}>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Name</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
                                     </label>
-                                    <input type="text" value={user?.displayName} disabled class="input input-bordered" />
+                                    <input type="text" value={user?.displayName} disabled className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Email</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
                                     </label>
-                                    <input type="text" value={user?.email} disabled class="input input-bordered" />
+                                    <input type="text" value={user?.email} disabled className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Add Quantity</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Add Quantity</span>
                                     </label>
                                     <input
                                         type="number"
                                         required
                                         onBlur={handleQuantity}
                                         placeholder="Please Input Greter Than Minimum Quantity"
-                                        class="input input-bordered" />
+                                        className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Phone Number</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Phone Number</span>
                                     </label>
-                                    <input type="number" name='phone' required placeholder='Add a phone Number' class="input input-bordered" />
+                                    <input type="number" name='phone' required placeholder='Add a phone Number' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Address</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Address</span>
                                     </label>
-                                    <textarea type="text" required name='address' placeholder='Add your Address' class="input input-bordered" ></textarea>
+                                    <textarea type="text" required name='address' placeholder='Add your Address' className="input input-bordered" ></textarea>
                                 </div>
-                                <div class="card-actions justify-center mt-5">
-                                    <button disabled={btnDisable} class="btn btn-primary">Buy Now</button>
+                                <div className="card-actions justify-center mt-5">
+                                    <button disabled={btnDisable} className="btn btn-primary">Buy Now</button>
                                 </div>
                             </form>
                         </div>

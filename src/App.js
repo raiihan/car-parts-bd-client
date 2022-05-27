@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import About from "./pages/About/About";
 import Login from "./pages/Auth/Login";
 import PrivateRoute from "./pages/Auth/PrivateRoute";
 import Signup from "./pages/Auth/Signup";
@@ -7,9 +6,6 @@ import Blog from "./pages/Blog/Blog";
 import Home from "./pages/Home/Home";
 import NewsLetter from "./pages/Home/NewsLetter";
 import Navbar from "./pages/Shared/Navbar";
-
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import FitForMe from "./pages/Home/FitForMe";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MyOrders from "./pages/Dashboard/MyOrders";
@@ -23,6 +19,12 @@ import ManageProduct from "./pages/Dashboard/ManageProduct";
 import PurchasePage from "./pages/Home/PurchasePage";
 import Payments from "./pages/Dashboard/Payments";
 import EditProfile from "./pages/Dashboard/EditProfile";
+import NotFound from "./pages/Shared/NotFound";
+import MyPortfolio from "./pages/About/MyPortfolio";
+
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -47,14 +49,15 @@ function App() {
               <Route path="manageproduct" element={<ManageProduct />} />
             </Route>
           </Route>
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/about" element={<About />} />
           <Route path="/fitforme" element={<FitForMe />} />
         </Route>
 
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/portfolio" element={<MyPortfolio />} />
         <Route path="/newsletter" element={<NewsLetter />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />
     </>

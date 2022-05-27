@@ -6,7 +6,7 @@ import DeleteConfirmation from './DeleteConfirmation';
 const ManageProduct = () => {
     const [deleteProduct, setDeleteProduct] = useState(null)
     const { isLoading, data: carParts, refetch } = useQuery('carParts', () =>
-        fetch('http://localhost:5000/parts', {
+        fetch('https://lit-crag-25230.herokuapp.com/parts', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessJWT')}`
@@ -22,8 +22,8 @@ const ManageProduct = () => {
     return (
         <div>
             <h2 className='text-xl mb-4'>Manage Products</h2>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
@@ -43,7 +43,7 @@ const ManageProduct = () => {
                                 <td>{parts.availableQnt}</td>
                                 <td>${parts.price}</td>
                                 <td>
-                                    <label onClick={() => setDeleteProduct(parts)} for="parts-delete-modal" class="btn btn-xs btn-error">Delete</label>
+                                    <label onClick={() => setDeleteProduct(parts)} htmlFor="parts-delete-modal" className="btn btn-xs btn-error">Delete</label>
                                 </td>
                             </tr>)
                         }

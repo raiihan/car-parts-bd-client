@@ -10,32 +10,32 @@ const Summary = () => {
             <h1 className='text-3xl font-bold p-6'>Your Trusted Auto Parts Partner</h1>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
 
-                <div class="stats shadow p-8">
-                    <div class="stat">
-                        <div class="stat-figure text-primary">
+                <div className="stats shadow p-8">
+                    <div className="stat">
+                        <div className="stat-figure text-primary">
                             <BsFillPeopleFill size={80} />
                         </div>
-                        <div class="stat-value">136+</div>
-                        <div class="stat-title">Happy Clients</div>
+                        <div className="stat-value">136+</div>
+                        <div className="stat-title">Happy Clients</div>
                     </div>
                 </div>
-                <div class="stats shadow p-8">
-                    <div class="stat">
-                        <div class="stat-figure text-primary">
+                <div className="stats shadow p-8">
+                    <div className="stat">
+                        <div className="stat-figure text-primary">
                             <GiShoppingBag size={80} />
                         </div>
-                        <div class="stat-value">3036+</div>
-                        <div class="stat-title">Available Products</div>
+                        <div className="stat-value">3036+</div>
+                        <div className="stat-title">Available Products</div>
                     </div>
                 </div>
-                <div class="stats shadow p-8">
-                    <div class="stat">
-                        <div class="stat-figure text-primary">
+                <div className="stats shadow p-8">
+                    <div className="stat">
+                        <div className="stat-figure text-primary">
                             <MdReviews size={80} />
                         </div>
-                        <div class="stat-value">183+</div>
-                        <div class="stat-title">Total Reviews</div>
-                        <div class="stat-desc">17% increase than last month</div>
+                        <div className="stat-value">183+</div>
+                        <div className="stat-title">Total Reviews</div>
+                        <div className="stat-desc">17% increase than last month</div>
                     </div>
                 </div>
 

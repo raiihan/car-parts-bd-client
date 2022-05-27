@@ -25,11 +25,16 @@ const AddProduct = () => {
 
     const onSubmit = async inputData => {
         const parts = {
-            ...inputData,
+            name: inputData.name,
+            type: inputData.type,
+            price: parseInt(inputData.price),
+            minimumQnt: parseInt(inputData.minimumQnt),
+            availableQnt: parseInt(inputData.availableQnt),
+            details: inputData.details,
             img: imageURL,
         };
 
-        const { data } = await baseurl.post('parts', parts);
+        const { data } = await baseurl.post('/parts', parts);
         if (data.insertedId) {
             toast('Your Product added Successfully');
             reset();
@@ -38,9 +43,9 @@ const AddProduct = () => {
     return (
         <div className='w-full lg:w-3/5 mx=auto'>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Product Name</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Product Name</span>
                     </label>
                     <input type="text"
                         {...register("name", {
@@ -49,14 +54,14 @@ const AddProduct = () => {
                                 message: 'Name is Required'
                             }
                         })}
-                        placeholder='Add a Product Name' class="input input-bordered" />
-                    <label class="label">
-                        {errors.name?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.name?.message}</span>}
+                        placeholder='Add a Product Name' className="input input-bordered" />
+                    <label className="label">
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.name?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Product Type</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Product Type</span>
                     </label>
                     <input type="text"
                         {...register("type", {
@@ -65,14 +70,14 @@ const AddProduct = () => {
                                 message: 'Product Type is Required'
                             }
                         })}
-                        placeholder='Add Product Type' class="input input-bordered" />
-                    <label class="label">
-                        {errors.type?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.type?.message}</span>}
+                        placeholder='Add Product Type' className="input input-bordered" />
+                    <label className="label">
+                        {errors.type?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.type?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Unit Price</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Unit Price</span>
                     </label>
                     <input
                         type="number"
@@ -83,14 +88,14 @@ const AddProduct = () => {
                             }
                         })}
                         placeholder="Minimum Quantity"
-                        class="input input-bordered" />
-                    <label class="label">
-                        {errors.price?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.price?.message}</span>}
+                        className="input input-bordered" />
+                    <label className="label">
+                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.price?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Minumum Quantity</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Minumum Quantity</span>
                     </label>
                     <input
                         type="number"
@@ -101,14 +106,14 @@ const AddProduct = () => {
                             }
                         })}
                         placeholder="Minimum Quantity"
-                        class="input input-bordered" />
-                    <label class="label">
-                        {errors.minimumQnt?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.minimumQnt?.message}</span>}
+                        className="input input-bordered" />
+                    <label className="label">
+                        {errors.minimumQnt?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.minimumQnt?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Available Quantity</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Available Quantity</span>
                     </label>
                     <input type="number"
                         {...register("availableQnt", {
@@ -117,37 +122,37 @@ const AddProduct = () => {
                                 message: 'Available Quantity is Required'
                             }
                         })}
-                        placeholder='Available Quantity' class="input input-bordered" />
-                    <label class="label">
-                        {errors.availableQnt?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.availableQnt?.message}</span>}
+                        placeholder='Available Quantity' className="input input-bordered" />
+                    <label className="label">
+                        {errors.availableQnt?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.availableQnt?.message}</span>}
                     </label>
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Product Image</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Product Image</span>
                     </label>
                     <input type="file"
                         onChange={handleImage}
-                        required placeholder='Add a Image' class="input input-bordered" />
+                        required placeholder='Add a Image' className="input input-bordered" />
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">Address</span>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Description</span>
                     </label>
                     <textarea type="text"
                         {...register("details", {
                             required: {
                                 value: true,
-                                message: 'Address is Required'
+                                message: 'Description is Required'
                             }
                         })}
-                        placeholder='Description' class="input input-bordered" ></textarea>
-                    <label class="label">
-                        {errors.details?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.details?.message}</span>}
+                        placeholder='Description' className="input input-bordered" ></textarea>
+                    <label className="label">
+                        {errors.details?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.details?.message}</span>}
                     </label>
                 </div>
-                <div class="card-actions justify-center mt-5">
-                    <button class="btn btn-primary">ADD PRODUCT</button>
+                <div className="card-actions justify-center mt-5">
+                    <button className="btn btn-primary">ADD PRODUCT</button>
                 </div>
             </form>
         </div>

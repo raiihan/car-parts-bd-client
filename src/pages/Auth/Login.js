@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
@@ -7,7 +7,6 @@ import Social from './Social';
 import auth from '../../Firebase/Firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
-import baseurl from '../../api/baseurl';
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
@@ -40,32 +39,34 @@ const Login = () => {
             toast.error('Please Enter Valid Email')
         }
     }
-
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    }, [user, from, navigate, token])
 
     if (loading || sending) {
         return <Loading />
     }
-    if (user) {
-        navigate(from, { replace: true })
-    }
+
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
         reset()
     };
     return (
         <div>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row ">
-                    <div class="hidden lg:flex mr-28">
-                        <img src={authImg} alt='auth' class="max-w-sm rounded-lg" />
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row ">
+                    <div className="hidden lg:flex mr-28">
+                        <img src={authImg} alt='auth' className="max-w-sm rounded-lg" />
                     </div>
-                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <h2 className='text-3xl text-center pt-5'>Login</h2>
-                        <div class="card-body">
+                        <div className="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Email</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
                                     </label>
                                     <input type="text"
                                         {...register("email", {
@@ -79,18 +80,18 @@ const Login = () => {
                                             }
                                         })}
                                         placeholder="email"
-                                        class="input input-bordered"
+                                        className="input input-bordered"
                                         onChange={(e) => setResetEmail(e.target.value)}
                                     />
-                                    <label class="label">
-                                        {errors.email?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.email?.message}</span>}
-                                        {errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors?.email?.message}</span>}
+                                    <label className="label">
+                                        {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.email?.message}</span>}
+                                        {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors?.email?.message}</span>}
                                     </label>
                                 </div>
 
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Password</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Password</span>
                                     </label>
                                     <input type="password"
                                         {...register("password", {
@@ -103,25 +104,25 @@ const Login = () => {
                                                 message: 'Minimum Character Length 6 or Longer'
                                             }
                                         })}
-                                        placeholder="password" class="input input-bordered" />
-                                    <label class="label">
-                                        {errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors?.password?.message}</span>}
-                                        {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors?.password?.message}</span>}
+                                        placeholder="password" className="input input-bordered" />
+                                    <label className="label">
+                                        {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.password?.message}</span>}
+                                        {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors?.password?.message}</span>}
                                     </label>
 
-                                    <label class="label flex justify-end">
+                                    <label className="label flex justify-end">
                                         <button
                                             onClick={resetPassword}
-                                            class="label-text-alt link link-hover">Forgot password?</button>
+                                            className="label-text-alt link link-hover">Forgot password?</button>
                                     </label>
                                 </div>
                                 <p className='text-red-500 text-center'><small>{error?.message || resetError?.message}</small></p>
-                                <div class="form-control mt-6">
-                                    <button type='submit' class="btn btn-primary">Login</button>
+                                <div className="form-control mt-6">
+                                    <button type='submit' className="btn btn-primary">Login</button>
                                 </div>
                             </form>
                             <p className='text-center'><small>Are you new to Car parts? <Link to='/signup' className='text-primary'>Create an Account</Link></small></p>
-                            <div class="divider">OR</div>
+                            <div className="divider">OR</div>
                             <Social />
                         </div>
                     </div>

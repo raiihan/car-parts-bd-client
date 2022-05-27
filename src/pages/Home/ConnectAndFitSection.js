@@ -7,9 +7,11 @@ const ConnectAndFitSection = () => {
     const navigate = useNavigate()
     return (
         <div
-            onClick={() => navigate('/fitforme')}
+
             className='flex flex-col lg:flex-row justify-center mt-24'>
-            <div className=' shadow-2xl mb-8 sm:mb-0 lg:mr-5 cursor-pointer'>
+            <div
+                onClick={() => navigate('/fitforme')}
+                className=' shadow-2xl mb-8 sm:mb-0 lg:mr-5 cursor-pointer'>
                 <img src={fit} alt="fit" />
             </div>
             <div

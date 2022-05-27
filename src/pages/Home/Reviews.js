@@ -4,7 +4,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { useQuery } from 'react-query';
 
 const Reviews = () => {
-    const { data: reviews, isLoading } = useQuery('rating', () => fetch('http://localhost:5000/review').then(res => res.json()));
+    const { data: reviews, isLoading } = useQuery('rating', () => fetch('https://lit-crag-25230.herokuapp.com/review').then(res => res.json()));
     if (isLoading) {
         return <p>loadding...</p>
     }
@@ -15,9 +15,9 @@ const Reviews = () => {
                 {
                     reviews?.slice(0, 6).map(review => (<div
                         key={review._id}
-                        class="card w-96 bg-base-100 shadow-xl">
-                        <div class="card-body">
-                            <h2 class="card-title">{review.name}</h2>
+                        className="card w-96 bg-base-100 shadow-xl">
+                        <div className="card-body">
+                            <h2 className="card-title">{review.name}</h2>
                             <div className='flex justify-center items-center'><p>Rating: <span className='font-bold'>{review.rating}</span> out of <span className='font-bold'>5</span></p> <p>
                                 <StarRatingComponent
                                     name="rating"

@@ -23,7 +23,7 @@ const WhyChooseUs = () => {
     ]
     return (
         <>
-            <div class="divider text-2xl lg:px-20 mt-24">Why Choose Car Parts BD</div>
+            <div className="divider text-2xl lg:px-20 mt-24">Why Choose Car Parts BD</div>
             <div className='grid grid-cols-1 lg:grid-cols-3 mt-9 gap-8 bg-base-200 p-2 lg:p-14 lg:px-'>
 
                 {
