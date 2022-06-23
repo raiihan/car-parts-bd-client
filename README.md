@@ -9,3 +9,9 @@
 * Here a Newwletter option if you subcribe then you got news about recent parts
 * This site have also a dashboar here a Admin can add product, shipped product, cancel Order and aslo make admin others
 * Here have a Profile section you can update your details
+
+#
+
+### Admin Credentials
+Email:- admin@carpartsbd.com
+Password:- 123456
