@@ -6,7 +6,7 @@ import DeleteConfirmation from './DeleteConfirmation';
 const ManageProduct = () => {
     const [deleteProduct, setDeleteProduct] = useState(null)
     const { isLoading, data: carParts, refetch } = useQuery('carParts', () =>
-        fetch('https://car-parts-server.vercel.app//parts', {
+        fetch('https://car-parts-bd-server.onrender.com//parts', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessJWT')}`

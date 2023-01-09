@@ -13,7 +13,7 @@ const useAdmin = user => {
             //     setAdmin(data.admin);
             // })()
 
-            fetch(`https://car-parts-server.vercel.app//admin/${email}`, {
+            fetch(`https://car-parts-bd-server.onrender.com//admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessJWT')}`

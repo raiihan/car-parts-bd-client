@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading';
 
 const Parts = () => {
     const { isLoading, data: carParts } = useQuery('carParts', () =>
-        fetch('https://car-parts-server.vercel.app//parts').then(res =>
+        fetch('https://car-parts-bd-server.onrender.com//parts').then(res =>
             res.json()
         )
     );

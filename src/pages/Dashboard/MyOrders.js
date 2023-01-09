@@ -14,7 +14,7 @@ const MyOrders = () => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`https://car-parts-server.vercel.app//orders/${email}`, {
+            fetch(`https://car-parts-bd-server.onrender.com//orders/${email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessJWT')}`

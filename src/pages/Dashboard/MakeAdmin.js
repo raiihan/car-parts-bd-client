@@ -16,7 +16,7 @@ const MakeAdmin = () => {
     }
 
     const makeAdmin = (email) => {
-        fetch(`https://car-parts-server.vercel.app//user/admin/${email}`, {
+        fetch(`https://car-parts-bd-server.onrender.com//user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessJWT')}`

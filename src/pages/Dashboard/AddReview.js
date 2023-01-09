@@ -16,7 +16,7 @@ const AddReview = () => {
             rating: parseInt(data.rating),
             review: data.review
         }
-        const res = await axios.post('https://car-parts-server.vercel.app//review', review)
+        const res = await axios.post('https://car-parts-bd-server.onrender.com//review', review)
 
         if (res?.data?.insertedId) {
             toast('Successfully Added Your Review');

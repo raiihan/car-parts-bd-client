@@ -16,7 +16,7 @@ const PaymentCheckoutForm = ({ order }) => {
 
     useEffect(() => {
         if (price) {
-            fetch('https://car-parts-server.vercel.app//create-payment-intent', {
+            fetch('https://car-parts-bd-server.onrender.com//create-payment-intent', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -88,7 +88,7 @@ const PaymentCheckoutForm = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`https://car-parts-server.vercel.app//order/${_id}`, {
+            fetch(`https://car-parts-bd-server.onrender.com//order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
