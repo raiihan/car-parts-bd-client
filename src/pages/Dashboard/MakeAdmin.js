@@ -16,7 +16,7 @@ const MakeAdmin = () => {
     }
 
     const makeAdmin = (email) => {
-        fetch(`https://lit-crag-25230.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://car-parts-server.vercel.app//user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessJWT')}`

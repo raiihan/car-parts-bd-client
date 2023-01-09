@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPrivate = axios.create({
-    baseURL: "https://lit-crag-25230.herokuapp.com"
+    baseURL: "https://car-parts-server.vercel.app/"
 })
 
 axiosPrivate.interceptors.request.use(function (config) {

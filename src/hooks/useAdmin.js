@@ -13,7 +13,7 @@ const useAdmin = user => {
             //     setAdmin(data.admin);
             // })()
 
-            fetch(`https://lit-crag-25230.herokuapp.com/admin/${email}`, {
+            fetch(`https://car-parts-server.vercel.app//admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessJWT')}`

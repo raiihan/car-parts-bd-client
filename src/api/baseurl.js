@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const baseurl = axios.create({
-    baseURL: "https://lit-crag-25230.herokuapp.com"
+    baseURL: "https://car-parts-server.vercel.app/"
 })
 export default baseurl;

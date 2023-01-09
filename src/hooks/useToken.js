@@ -12,7 +12,7 @@ const useToken = user => {
         };
         if (email) {
             (async () => {
-                const { data } = await axios.put(`https://lit-crag-25230.herokuapp.com/user/${email}`, userInfo);
+                const { data } = await axios.put(`https://car-parts-server.vercel.app//user/${email}`, userInfo);
                 const accessJWT = data?.accessJWT;
                 localStorage.setItem('accessJWT', accessJWT);
                 setToken(accessJWT);

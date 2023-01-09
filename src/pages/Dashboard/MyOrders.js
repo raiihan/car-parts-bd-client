@@ -14,7 +14,7 @@ const MyOrders = () => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`https://lit-crag-25230.herokuapp.com/orders/${email}`, {
+            fetch(`https://car-parts-server.vercel.app//orders/${email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessJWT')}`

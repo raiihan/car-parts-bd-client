@@ -6,7 +6,7 @@ import DeleteConfirmation from './DeleteConfirmation';
 const ManageProduct = () => {
     const [deleteProduct, setDeleteProduct] = useState(null)
     const { isLoading, data: carParts, refetch } = useQuery('carParts', () =>
-        fetch('https://lit-crag-25230.herokuapp.com/parts', {
+        fetch('https://car-parts-server.vercel.app//parts', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessJWT')}`
